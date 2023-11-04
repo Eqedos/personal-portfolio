@@ -1,6 +1,6 @@
 // @ts-nocheck
-import React, { useEffect } from "react";
-import { motion, useAnimation, useMotionValue } from "framer-motion";
+import React, { useEffect, useState } from "react";
+import { motion, useAnimation, useMotionValue, AnimatePresence } from "framer-motion";
 import { DiJavascript, DiAndroid, DiMysql, DiNodejsSmall, DiGit, DiCss3Full } from 'react-icons/di';
 import { FaReact, FaDocker, FaLinux, FaPython } from 'react-icons/fa';
 import ParthImage from "../assets/parth.png"; // Replace with the correct path to your image file
@@ -33,7 +33,80 @@ const TypingText = ({ text, className }) => {
     );
 };
 
+const Tooltip = ({ isVisible, children }) => {
+  // State to hold the current time
+  const [currentTime, setCurrentTime] = useState(new Date().toLocaleTimeString());
 
+  // Update the time every second
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date().toLocaleTimeString());
+    }, 1000);
+
+    // Clean up the interval on unmount
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.div
+          initial={{ scale: 0.5, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.5, opacity: 0 }}
+          transition={{ duration: 0.2 }}
+          style={{
+            position: 'absolute',
+            backgroundColor: '#000',
+            padding: '10px',
+            borderRadius: '5px',
+            boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.1)',
+            color: '#0f0', // Set the text color to green
+            bottom: '70%', // Position the tooltip above the image
+            left: '60%', // Center the tooltip
+            transform: 'translateX(-50%)', // Center the tooltip
+            fontFamily: 'Courier, monospace', // Use a monospace font
+            width: '270px', // Set a fixed width
+          }}
+        >
+          <div style={{ backgroundColor: '#555', color: '#0f0', padding: '2px 5px', borderRadius: '5px 5px 0 0', border: '0.5px solid #fff', borderBottom: 'none' }}>
+            Terminal - {currentTime}
+          </div>
+          <div style={{ padding: '10px', color: '#0f0', border: '0.5px solid #fff', borderRadius: '0 0 5px 5px' }}>
+            {children.map((line, index) => (
+              <div key={index}>
+                <span style={{ color: '#0f0' }}>$</span> {line}
+              </div>
+            ))}
+          </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+};
+
+
+
+
+const ImageWithTooltip = ({ src, alt, className, initial, whileHover, transition, children }) => {
+  const [isTooltipVisible, setTooltipVisible] = useState(false);
+
+  return (
+    <div className="relative">
+      <motion.img 
+        src={src} 
+        alt={alt} 
+        className={className} 
+        initial={initial}
+        whileHover={whileHover}
+        transition={transition}
+        onHoverStart={() => setTooltipVisible(true)}
+        onHoverEnd={() => setTooltipVisible(false)}
+      />
+      <Tooltip isVisible={isTooltipVisible}>{children}</Tooltip>
+    </div>
+  );
+};
 
 const Hero = () => {
     const icons = [
@@ -105,7 +178,7 @@ const Hero = () => {
                                 justifyContent: 'center', 
                                 alignItems: 'center', 
                                 width: '50px', 
-                                height:                                 '50px' 
+                                height: '50px' 
                             }}
                             onClick={() => handleIconClick(icon.name)}
                             drag // This makes the icon draggable
@@ -124,14 +197,16 @@ const Hero = () => {
                     </motion.button>
                 </div>
                 <div className="lg:w-1/2 flex items-center justify-center">
-                   <motion.img 
-                        src={ParthImage} 
-                        alt="Parth Kumar" 
-                        className="w-full max-w-md h-auto object-cover rounded-lg" 
+                   <ImageWithTooltip
+                        src={ParthImage}
+                        alt="Parth Kumar"
+                        className="w-full max-w-md h-auto object-cover rounded-lg"
                         initial={{ scale: 1 }}
                         whileHover={{ scale: 1.05 }}
                         transition={{ type: "spring", stiffness: 260, damping: 20 }}
-                    />
+                    >
+                        {["Hi, I'm Parth Kumar", "I'm a software engineer", "I'm a full-stack developer with a keen interest in ML"]}
+                    </ImageWithTooltip>
                 </div>
             </div>
         </section>
