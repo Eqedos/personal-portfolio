@@ -16,8 +16,10 @@
     "particles-bg": "^2.5.5",
     "particles.js": "^2.0.0",
     "react": "^18.2.0",
+    "react-colorful": "^5.6.1",
     "react-dom": "^18.2.0",
     "react-icons": "^4.11.0",
+    "react-live-clock": "^6.1.16",
     "react-particles": "^2.12.2",
     "react-tsparticles": "^2.12.2",
     "tsparticles": "^2.12.0"

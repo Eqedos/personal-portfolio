@@ -1,36 +1,85 @@
-import React, { useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
+import { motion } from 'framer-motion';
 import { FolderIcon } from '@heroicons/react/24/outline';
-import { FaUserAlt, FaPhoneAlt, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa'; // Added more FontAwesome icons
-import { DiJavascript1, DiHtml5, DiCss3, DiMongodb, DiPython } from 'react-icons/di'; // Added Devicons for MongoDB and Python
+import { FaUserAlt, FaPhoneAlt, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
+import { DiJavascript1, DiHtml5, DiCss3, DiMongodb, DiPython } from 'react-icons/di';
 import Icon from './components/Icon';
 import StatusBarElement from './components/StatusBarElement';
+import Clock from './components/Clock';
+import ColorPickerModal from './components/ColorPickerModal';
+import CenteredText from './components/CenteredText';
+const statusBarIcons = [
+  { id: 'js', icon: DiJavascript1, color: "yellow" },
+  { id: 'html', icon: DiHtml5, color: "blue" },
+  { id: 'css', icon: DiCss3, color: "purple" },
+  { id: 'react', icon: FaReact, color: "cyan" },
+  { id: 'node', icon: FaNodeJs, color: "green" },
+  { id: 'mongo', icon: DiMongodb, color: "green" },
+  { id: 'git', icon: FaGitAlt, color: "orange" },
+  { id: 'python', icon: DiPython, color: "blue" },
+];
 
 const App = () => {
-  const constraintsRef = useRef(null);
+  const [backgroundColor, setBackgroundColor] = useState("#000"); // Default color set to dark grey
+  const [showColorPicker, setShowColorPicker] = useState(false);
+
+  useEffect(() => {
+    document.body.style.backgroundColor = backgroundColor;
+  }, [backgroundColor]);
+
+  const toggleColorPicker = () => {
+    setShowColorPicker(!showColorPicker);
+  };
+
+  const colorPickerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0 }
+  };
 
   return (
-    <div className="flex flex-col h-screen bg-black overflow-hidden">
-      <main className="flex-grow p-4">
-        <div className="flex flex-col h-full justify-start items-start"
-          style={{ position: 'relative', width: '100%', height: '100%' }}
-          ref={constraintsRef}
-        >
-          <Icon text="About Me" onClick={() => {}} icon={FaUserAlt} constraintsRef={constraintsRef} />
-          <Icon text="Projects" onClick={() => {}} icon={FolderIcon} constraintsRef={constraintsRef} />
-          <Icon text="Contact" onClick={() => {}} icon={FaPhoneAlt} constraintsRef={constraintsRef} />
+    <div className="flex flex-col h-screen overflow-hidden relative">
+      <main className="flex-grow p-4 relative z-10">
+        <div className="flex flex-col justify-start items-start h-full">
+          {/* Apply a z-index to the container of Icons to ensure they are above the CenteredText */}
+          <div className="z-20">
+            <Icon text="About Me" onClick={() => {}} icon={FaUserAlt} />
+            <Icon text="Projects" onClick={() => {}} icon={FolderIcon} />
+            <Icon text="Contact" onClick={() => {}} icon={FaPhoneAlt} />
+          </div>
+          {/* CenteredText */}
+          <CenteredText
+            mainText="Parth Kumar"
+            subText="Student | Software Engineer"
+            instruction="I make things work."
+          />
         </div>
       </main>
-      <footer className="p-4 bg-black text-white flex items-center justify-center">
-        <StatusBarElement onClick={() => {}} icon={DiJavascript1} color="yellow" />
-        <StatusBarElement onClick={() => {}} icon={DiHtml5} color="blue" />
-        <StatusBarElement onClick={() => {}} icon={DiCss3} color="purple" />
-        <StatusBarElement onClick={() => {}} icon={FaReact} color="cyan" />
-        <StatusBarElement onClick={() => {}} icon={FaNodeJs} color="green" />
-        <StatusBarElement onClick={() => {}} icon={DiMongodb} color="green" />
-        <StatusBarElement onClick={() => {}} icon={FaGitAlt} color="orange" />
-        <StatusBarElement onClick={() => {}} icon={DiPython} color="blue" />
+      <footer className="p-4 bg-black text-white flex items-center justify-center z-10">
+        {statusBarIcons.map(iconData => (
+          <StatusBarElement key={iconData.id} onClick={() => {}} icon={iconData.icon} color={iconData.color} />
+        ))}
       </footer>
+      <div className="absolute right-0 bottom-0 p-4 flex items-center z-20">
+        <motion.div
+          onClick={toggleColorPicker}
+          className="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-400 via-pink-500 to-yellow-500 shadow cursor-pointer mr-2"
+          aria-label="Color picker"
+          initial="hidden"
+          animate="visible"
+          variants={colorPickerVariants}
+          transition={{ type: "spring", stiffness: 300 }}
+        />
+        <Clock />
+      </div>
+      {showColorPicker && (
+        <ColorPickerModal
+          color={backgroundColor}
+          setColor={setBackgroundColor}
+          showModal={showColorPicker}
+          setShowModal={setShowColorPicker}
+        />
+      )}
     </div>
   );
 };
