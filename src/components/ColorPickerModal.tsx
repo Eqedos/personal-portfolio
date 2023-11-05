@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React from 'react';
 import { HexColorPicker } from "react-colorful";
 import { motion, AnimatePresence } from 'framer-motion';

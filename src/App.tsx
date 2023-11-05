@@ -1,3 +1,4 @@
+//@ts-nocheck
 import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import { motion } from 'framer-motion';

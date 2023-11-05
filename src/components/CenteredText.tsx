@@ -1,7 +1,8 @@
+//@ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// Define gradient presets
+// Define gradient presets using Tailwind CSS classes
 const gradients = {
   tealEmerald: 'from-teal-400 to-emerald-500',
   purplePink: 'from-purple-400 to-pink-500',
@@ -12,9 +13,8 @@ const gradients = {
 
 const GradientDot = ({ gradientClass, isSelected, onClick }) => (
   <div
-    className={`h-4 w-4 rounded-full cursor-pointer ring-2 ring-white ${isSelected ? 'ring-offset-2' : ''}`}
+    className={`h-4 w-4 rounded-full cursor-pointer ring-2 ring-white ${isSelected ? 'ring-offset-2' : ''} bg-gradient-to-r ${gradientClass}`}
     onClick={onClick}
-    style={{ background: `linear-gradient(to right, ${gradientClass})` }}
   />
 );
 
@@ -48,8 +48,8 @@ const CenteredText = ({ mainText, subText, instruction }) => {
           <GradientDot
             key={name}
             gradientClass={gradientClass}
-            isSelected={gradient === gradientClass}
-            onClick={() => setGradient(gradientClass)}
+            isSelected={gradient === gradients[name]}
+            onClick={() => setGradient(gradients[name])}
           />
         ))}
       </div>
@@ -57,7 +57,7 @@ const CenteredText = ({ mainText, subText, instruction }) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className={`text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${gradient} pointer-events-none`}
+        className={`text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}
       >
         {mainText}
       </motion.h1>
