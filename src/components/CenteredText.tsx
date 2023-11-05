@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-// Define gradient presets using Tailwind CSS classes
+// Define gradient presets
 const gradients = {
   tealEmerald: 'from-teal-400 to-emerald-500',
   purplePink: 'from-purple-400 to-pink-500',
@@ -19,27 +19,25 @@ const GradientDot = ({ gradientClass, isSelected, onClick }) => (
 );
 
 const CenteredText = ({ mainText, subText, instruction }) => {
-  const formattedInstruction = instruction ? `$${instruction}`.trim().replace(/\s+/g, '-') : '';
   const [displayText, setDisplayText] = useState('');
   const [gradient, setGradient] = useState(gradients.orangeYellow);
 
+  // Effect for instructions animation
   useEffect(() => {
-    if (formattedInstruction.length === 0) return;
-
+    if (!instruction) return;
+    let formattedInstruction = `$${instruction}`.trim().replace(/\s+/g, '-');
     let currentText = '';
     let i = 0;
     const timerId = setInterval(() => {
       currentText += formattedInstruction[i];
       setDisplayText(currentText);
       i++;
-
       if (i >= formattedInstruction.length) {
         clearInterval(timerId);
       }
     }, 100);
-
     return () => clearInterval(timerId);
-  }, [formattedInstruction]);
+  }, [instruction]);
 
   return (
     <div className="absolute inset-0 flex flex-col items-center justify-center">
@@ -54,7 +52,8 @@ const CenteredText = ({ mainText, subText, instruction }) => {
         ))}
       </div>
       <motion.h1
-        initial={{ opacity: 0, y: 50 }}
+        key={gradient} // Key based on gradient to trigger animation
+        initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className={`text-5xl lg:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r ${gradient}`}
@@ -62,11 +61,11 @@ const CenteredText = ({ mainText, subText, instruction }) => {
         {mainText}
       </motion.h1>
       <div className="mt-4 flex space-x-3">
-        <span className="text-sm lg:text-lg font-medium text-gray-400 pointer-events-none">
+        <span className="text-sm lg:text-lg font-medium text-gray-400">
           {subText}
         </span>
       </div>
-      <p className="text-xs lg:text-sm text-green-300 bg-green-500 bg-opacity-25 rounded-md p-2 font-mono mt-2 pointer-events-auto">
+      <p className="text-xs lg:text-sm text-green-300 bg-green-500 bg-opacity-25 rounded-md p-2 font-mono mt-2">
         {displayText}
       </p>
     </div>
