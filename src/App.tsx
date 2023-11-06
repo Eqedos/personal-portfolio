@@ -3,13 +3,16 @@ import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import { motion } from 'framer-motion';
 import { FolderIcon } from '@heroicons/react/24/outline';
-import { FaUserAlt, FaPhoneAlt, FaReact, FaNodeJs, FaGitAlt } from 'react-icons/fa';
+import { FaUserAlt, FaPhoneAlt, FaReact, FaNodeJs, FaGitAlt, FaTerminal } from 'react-icons/fa';
 import { DiJavascript1, DiHtml5, DiCss3, DiMongodb, DiPython } from 'react-icons/di';
 import Icon from './components/Icon';
 import StatusBarElement from './components/StatusBarElement';
 import Clock from './components/Clock';
 import ColorPickerModal from './components/ColorPickerModal';
 import CenteredText from './components/CenteredText';
+import Terminal from './components/Terminal';
+import { useHotkeys } from 'react-hotkeys-hook';
+
 const statusBarIcons = [
   { id: 'js', icon: DiJavascript1, color: "yellow" },
   { id: 'html', icon: DiHtml5, color: "blue" },
@@ -24,6 +27,7 @@ const statusBarIcons = [
 const App = () => {
   const [backgroundColor, setBackgroundColor] = useState("#000"); // Default color set to dark grey
   const [showColorPicker, setShowColorPicker] = useState(false);
+  const [showTerminal, setShowTerminal] = useState(false); // State for Terminal visibility
 
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
@@ -32,6 +36,12 @@ const App = () => {
   const toggleColorPicker = () => {
     setShowColorPicker(!showColorPicker);
   };
+
+  const toggleTerminal = () => { // Function to toggle Terminal visibility
+    setShowTerminal(!showTerminal);
+  };
+
+  useHotkeys('t', toggleTerminal); // Bind Ctrl+T to toggleTerminal
 
   const colorPickerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -42,13 +52,11 @@ const App = () => {
     <div className="flex flex-col h-screen overflow-hidden relative">
       <main className="flex-grow p-4 relative z-10">
         <div className="flex flex-col justify-start items-start h-full">
-          {/* Apply a z-index to the container of Icons to ensure they are above the CenteredText */}
           <div className="z-20">
             <Icon text="About Me" onClick={() => {}} icon={FaUserAlt} />
             <Icon text="Projects" onClick={() => {}} icon={FolderIcon} />
             <Icon text="Contact" onClick={() => {}} icon={FaPhoneAlt} />
           </div>
-          {/* CenteredText */}
           <CenteredText
             mainText="Parth Kumar"
             subText="Student | Software Engineer"
@@ -61,6 +69,9 @@ const App = () => {
           <StatusBarElement key={iconData.id} onClick={() => {}} icon={iconData.icon} color={iconData.color} />
         ))}
       </footer>
+      <div className="absolute left-0 bottom-0 p-4 flex items-center z-20">
+        <FaTerminal className="text-white w-6 h-6 cursor-pointer" onClick={toggleTerminal} />
+      </div>
       <div className="absolute right-0 bottom-0 p-4 flex items-center z-20">
         <motion.div
           onClick={toggleColorPicker}
@@ -81,6 +92,7 @@ const App = () => {
           setShowModal={setShowColorPicker}
         />
       )}
+      {showTerminal && <Terminal onClose={toggleTerminal} />} {/* Pass toggleTerminal as onClose prop */}
     </div>
   );
 };
