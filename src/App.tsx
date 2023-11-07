@@ -12,7 +12,9 @@ import ColorPickerModal from './components/ColorPickerModal';
 import CenteredText from './components/CenteredText';
 import Terminal from './components/Terminal';
 import AboutMe from './components/AboutMe';
+import Contact from './components/Contact';
 import { useHotkeys } from 'react-hotkeys-hook';
+
 
 const statusBarIcons = [
   { id: 'js', icon: DiJavascript1, color: "yellow" },
@@ -29,6 +31,7 @@ const App = () => {
   const [backgroundColor, setBackgroundColor] = useState("#000");
   const [showColorPicker, setShowColorPicker] = useState(false);
   const [showTerminal, setShowTerminal] = useState(false);
+  const [showContact, setShowContact] = useState(false);
   const [showAboutMe, setShowAboutMe] = useState(false);
 
   useEffect(() => {
@@ -38,6 +41,7 @@ const App = () => {
   const toggleColorPicker = () => setShowColorPicker(!showColorPicker);
   const toggleTerminal = () => setShowTerminal(!showTerminal);
   const toggleAboutMe = () => setShowAboutMe(!showAboutMe);
+  const toggleContact = () => setShowContact(!showContact);
 
   useHotkeys('t', toggleTerminal);
 
@@ -52,7 +56,7 @@ const App = () => {
         <div className="z-30">
           <Icon text="About Me" onClick={toggleAboutMe} icon={FaUserAlt} />
           <Icon text="Projects" onClick={() => {}} icon={FolderIcon} />
-          <Icon text="Contact" onClick={() => {}} icon={FaPhoneAlt} />
+          <Icon text="Contact" onClick={toggleContact} icon={FaPhoneAlt} />
         </div>
         <CenteredText
           mainText="Parth Kumar"
@@ -67,6 +71,16 @@ const App = () => {
             exit={{ opacity: 0 }}
           >
             <AboutMe onClose={toggleAboutMe}/>
+          </motion.div>
+        )}
+        {showContact && (
+          <motion.div
+            className="absolute inset-0 flex justify-center items-center z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Contact onClose={toggleContact}/>
           </motion.div>
         )}
       </main>

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@formspree/react": "^2.5.1",
     "@heroicons/react": "^2.0.18",
     "framer-motion": "^10.16.4",
     "heroicons": "^2.0.18",
