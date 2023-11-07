@@ -91,7 +91,7 @@ const Terminal = ({ onClose }) => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50"
+      className="fixed top-0 left-0 w-full h-full flex justify-center items-center z-40"
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       exit={{ scale: 0 }}
@@ -136,7 +136,6 @@ const Terminal = ({ onClose }) => {
     <div ref={inputRef} /> {/* Ensure this is at the bottom of your scrollable content */}
   </div>
 </motion.div>
-
     </motion.div>
   );
 };

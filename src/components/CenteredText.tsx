@@ -1,6 +1,7 @@
 //@ts-nocheck
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa'; // Importing icons from React Icons
 
 // Define gradient presets
 const gradients = {
@@ -25,7 +26,7 @@ const CenteredText = ({ mainText, subText, instruction }) => {
   // Effect for instructions animation
   useEffect(() => {
     if (!instruction) return;
-    let formattedInstruction = `$${instruction}`.trim().replace(/\s+/g, '-');
+    let formattedInstruction = `${instruction}`.trim().replace(/\s+/g, '-');
     let currentText = '';
     let i = 0;
     const timerId = setInterval(() => {
@@ -46,8 +47,8 @@ const CenteredText = ({ mainText, subText, instruction }) => {
           <GradientDot
             key={name}
             gradientClass={gradientClass}
-            isSelected={gradient === gradients[name]}
-            onClick={() => setGradient(gradients[name])}
+            isSelected={gradient === gradientClass}
+            onClick={() => setGradient(gradientClass)}
           />
         ))}
       </div>
@@ -68,6 +69,18 @@ const CenteredText = ({ mainText, subText, instruction }) => {
       <p className="text-xs lg:text-sm text-green-300 bg-green-500 bg-opacity-25 rounded-md p-2 font-mono mt-2">
         {displayText}
       </p>
+      {/* Social Media Links with updated hover colors */}
+      <div className="flex justify-center space-x-6 mt-4">
+        <a href="https://github.com/eqedos" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#FFFFFF] transition-colors duration-300">
+          <FaGithub size={24} />
+        </a>
+        <a href="mailto:parthkumarj117@gmail.com" className="text-gray-600 hover:text-[#D44638] transition-colors duration-300">
+          <FaEnvelope size={24} />
+        </a>
+        <a href="https://www.linkedin.com/in/parth-kumar-j117/" target="_blank" rel="noopener noreferrer" className="text-gray-600 hover:text-[#0e76a8] transition-colors duration-300">
+          <FaLinkedinIn size={24} />
+        </a>
+      </div>
     </div>
   );
 };
