@@ -1,6 +1,10 @@
 //@ts-nocheck
 import React from 'react';
 import ProjectVoluntr from './ProjectVoluntr';
+import ProjectReelReview from './ProjectReelReview';
+import ProjectEcode from './ProjectEcode';
+import ProjectSW from './ProjectSW';
+import ProjectPortfolio from './ProjectPortfolio';
 
 const Header = ({ onClose }) => {
   return (
@@ -61,11 +65,15 @@ const ProjectShowcase = () => {
         Project Showcase.
       </h1>
       <p className="text-xl mb-5 text-left text-gray-300 font-light leading-loose">
-        Here, I'm showcasing a selection of my most accomplished and award-winning work. Each project is a testament to my dedication to excellence in software development and design. I'm continually working on new ideas and innovative solutions, so stay tuned for more exciting projects in the future. To observe the evolution of my work or to follow along with my progress, visit my <a href="https://github.com/eqedos" className="text-blue-400 hover:text-blue-300 transition duration-300 ease-in-out">GitHub profile</a>. New contributions and repositories will be added regularly, showcasing my commitment to growth and learning in the field of technology.
+        Here, I'm showcasing a selection of my most accomplished and award-winning work. Each project is a testament to my dedication to excellence in software development and design. I'm continually working on new ideas and innovative solutions, so stay tuned for more exciting projects in the future. To observe the evolution of my work or to follow along with my progress, visit my <a href="https://github.com/eqedos" target="_blank" className="text-blue-400 hover:text-blue-300 transition duration-300 ease-in-out">GitHub profile</a>. New contributions and repositories will be added regularly, showcasing my commitment to growth and learning in the field of technology.
       </p>
       <div className="space-y-6">
         {/* Repeat the Project component for each project in the dummy data */}
+        <ProjectPortfolio/>
         <ProjectVoluntr/>
+        <ProjectReelReview/>
+        <ProjectEcode/>
+        <ProjectSW/>
       </div>
     </div>
   );
