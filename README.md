@@ -1,4 +1,14 @@
-Portfolio Website
+## Portfolio Website
+
+<div align="center">
+  <img src="https://github.com/Eqedos/personal-portfolio/assets/113342246/0fbc2886-5ee9-4746-bef3-d904fbec606b)"
+ alt="Screenshot 1" width="600"/>
+  <img src="https://github.com/Eqedos/personal-portfolio/assets/113342246/fd229452-b466-4bbf-8518-00ba281cba20)"
+ alt="Screenshot 2" width="600"/>
+  <img src="https://github.com/Eqedos/personal-portfolio/assets/113342246/4e14911c-31b5-4db1-b07a-ce5ec72ead78)"
+ alt="Screenshot 2" width="600"/>
+</div>
+
 ## Description
 
 My portfolio website is an interactive, OS-themed portfolio website designed to showcase software development projects in a unique, engaging way. It simulates an operating system environment with a functioning terminal, file explorer, and other desktop-like features, offering users an immersive experience as they explore the portfolio.
