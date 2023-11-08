@@ -21,6 +21,7 @@ Built with JavaScript and React, this website is not only a portfolio but also a
   <img src="https://github.com/Eqedos/personal-portfolio/assets/113342246/fd229452-b466-4bbf-8518-00ba281cba20" alt="Screenshot 2" width="600"/>
   <img src="https://github.com/Eqedos/personal-portfolio/assets/113342246/4e14911c-31b5-4db1-b07a-ce5ec72ead78" alt="Screenshot 3" width="600"/>
 </p>
+
 ## Upcoming Transition to TypeScript
 
 The project is currently in JavaScript, but plans are in place to transition to TypeScript to leverage its type-checking features for better code scalability and maintainability.
