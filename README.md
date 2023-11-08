@@ -15,7 +15,7 @@ Built with JavaScript and React, this website is not only a portfolio but also a
 - **Functional Terminal**: A terminal that accepts commands and showcases projects, skills, and more.
 - **Dynamic Window Management**: Mimic the behavior of a desktop OS with draggable and resizable windows.
 - **Theme Customization**: Users can choose from various themes, replicating different OS looks.
-- **!Mobile Responsiveness**: Due the desktop OS theme, the site is not responsive on mobile devices.
+- **!Mobile Responsiveness**: Due the desktop OS theme, the site is not responsive on mobile devices. Although a mobile version is on it's way!
 
 <p align="center">
   <img src="https://github.com/Eqedos/personal-portfolio/assets/113342246/fd229452-b466-4bbf-8518-00ba281cba20" alt="Screenshot 2" width="600"/>
