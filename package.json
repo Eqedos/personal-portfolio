@@ -26,6 +26,7 @@
     "react-live-clock": "^6.1.16",
     "react-particles": "^2.12.2",
     "react-resizable": "^3.0.5",
+    "react-tilt": "^1.0.2",
     "react-tsparticles": "^2.12.2",
     "tailwind-scrollbar-hide": "^1.1.7",
     "tsparticles": "^2.12.0"

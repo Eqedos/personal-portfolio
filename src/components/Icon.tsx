@@ -6,6 +6,7 @@ const colorMapping = {
   "About Me": "text-indigo-500 ring-indigo-500", // Indigo is professional and trustworthy
   "Contact": "text-teal-500 ring-teal-500",      // Teal is inviting and associated with communication
   "Projects": "text-yellow-500 ring-yellow-500",  // Yellow is energetic and sparks creativity
+  "Experience": "text-amber-900 ring-amber-900"   // Brick is bold and confident
 };
 
 

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import { motion } from 'framer-motion';
 import { FolderIcon } from '@heroicons/react/24/outline';
-import { FaUserAlt, FaPhoneAlt, FaReact, FaNodeJs, FaGitAlt, FaTerminal } from 'react-icons/fa';
+import { FaUserAlt, FaPhoneAlt, FaReact, FaNodeJs, FaGitAlt, FaTerminal, FaBriefcase } from 'react-icons/fa';
 import { DiJavascript1, DiHtml5, DiCss3, DiMongodb, DiPython } from 'react-icons/di';
 import Icon from './components/Icon';
 import StatusBarElement from './components/StatusBarElement';
@@ -13,6 +13,7 @@ import CenteredText from './components/CenteredText';
 import Terminal from './components/Terminal';
 import AboutMe from './components/AboutMe';
 import Contact from './components/Contact';
+import Projects from './components/Projects';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 
@@ -33,6 +34,7 @@ const App = () => {
   const [showTerminal, setShowTerminal] = useState(false);
   const [showContact, setShowContact] = useState(false);
   const [showAboutMe, setShowAboutMe] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
 
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
@@ -42,6 +44,7 @@ const App = () => {
   const toggleTerminal = () => setShowTerminal(!showTerminal);
   const toggleAboutMe = () => setShowAboutMe(!showAboutMe);
   const toggleContact = () => setShowContact(!showContact);
+  const toggleProjects = () => setShowProjects(!showProjects);
 
   useHotkeys('t', toggleTerminal);
 
@@ -55,8 +58,9 @@ const App = () => {
       <main className="flex-grow p-4 relative z-10 flex justify-start items-start">
         <div className="z-30">
           <Icon text="About Me" onClick={toggleAboutMe} icon={FaUserAlt} />
-          <Icon text="Projects" onClick={() => {}} icon={FolderIcon} />
+          <Icon text="Projects" onClick={toggleProjects} icon={FolderIcon} />
           <Icon text="Contact" onClick={toggleContact} icon={FaPhoneAlt} />
+          <Icon text="Experience" onClick={() => {}} icon={FaBriefcase} />
         </div>
         <CenteredText
           mainText="Parth Kumar"
@@ -83,37 +87,53 @@ const App = () => {
             <Contact onClose={toggleContact}/>
           </motion.div>
         )}
+        {showProjects && (
+          <motion.div
+            className="absolute inset-0 flex justify-center items-center z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Projects onClose={toggleProjects}/>
+          </motion.div>
+        )}
       </main>
-      <footer className="p-4 bg-black text-white flex items-center justify-center z-10">
-        {statusBarIcons.map(iconData => (
-          <StatusBarElement key={iconData.id} onClick={() => {}} icon={iconData.icon} color={iconData.color} />
-        ))}
-      </footer>
-      <div className="absolute left-0 bottom-0 p-4 flex items-center z-30">
-        <FaTerminal className="text-white w-6 h-6 cursor-pointer" onClick={toggleTerminal} />
-      </div>
-      <div className="absolute right-0 bottom-0 p-4 flex items-center z-30">
-        <motion.div
-          onClick={toggleColorPicker}
-          className="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-400 via-pink-500 to-yellow-500 shadow cursor-pointer mr-2"
-          initial="hidden"
-          animate="visible"
-          variants={colorPickerVariants}
-          transition={{ type: "spring", stiffness: 300 }}
-        />
-        <Clock />
-      </div>
-      {showColorPicker && (
-        <ColorPickerModal
-          color={backgroundColor}
-          setColor={setBackgroundColor}
-          showModal={showColorPicker}
-          setShowModal={setShowColorPicker}
-        />
+      {!showProjects && (
+        <footer className="p-4 bg-black text-white flex items-center justify-center z-10">
+          {statusBarIcons.map(iconData => (
+            <StatusBarElement key={iconData.id} onClick={() => {}} icon={iconData.icon} color={iconData.color} />
+          ))}
+        </footer>
       )}
-      {showTerminal && <Terminal onClose={toggleTerminal} />}
+      {!showProjects && (
+  <div>
+    <div className="absolute left-0 bottom-0 p-4 flex items-center z-30">
+      <FaTerminal className="text-white w-6 h-6 cursor-pointer" onClick={toggleTerminal} />
+    </div>
+    <div className="absolute right-0 bottom-0 p-4 flex items-center z-30">
+      <motion.div
+        onClick={toggleColorPicker}
+        className="w-6 h-6 rounded-full bg-gradient-to-tr from-purple-400 via-pink-500 to-yellow-500 shadow cursor-pointer mr-2"
+        initial="hidden"
+        animate="visible"
+        variants={colorPickerVariants}
+        transition={{ type: "spring", stiffness: 300 }}
+      />
+      <Clock />
+    </div>
+    {showColorPicker && (
+      <ColorPickerModal
+        color={backgroundColor}
+        setColor={setBackgroundColor}
+        showModal={showColorPicker}
+        setShowModal={setShowColorPicker}
+      />
+    )}
+    {showTerminal && <Terminal onClose={toggleTerminal} />}
+  </div>
+)}
     </div>
   );
-};
+}
 
 export default App;
