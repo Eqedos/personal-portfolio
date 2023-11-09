@@ -58,16 +58,29 @@ const Main = () => {
   );
 };
 
+const Projects = ({ onClose }) => {
+  return (
+    <div className="flex flex-col bg-black text-white w-screen h-screen">
+      <Header onClose={onClose} />
+      <div className="flex-grow overflow-y-auto">
+        <ProjectShowcase />
+      </div>
+    </div>
+  );
+};
+
 const ProjectShowcase = () => {
   return (
-    <div className="h-96 overflow-y-auto scrollbar-hide pb-1">
+    // Add mx-auto to center the div and w-4/5 to set the width to 80%
+    <div className="w-4/5 mx-auto flex flex-col flex-grow overflow-y-auto">
       <h1 className="text-6xl font-bold mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 py-3">
         Project Showcase.
       </h1>
       <p className="text-xl mb-5 text-left text-gray-300 font-light leading-loose">
-        Here, I'm showcasing a selection of my most accomplished and award-winning work. Each project is a testament to my dedication to excellence in software development and design. I'm continually working on new ideas and innovative solutions, so stay tuned for more exciting projects in the future. To observe the evolution of my work or to follow along with my progress, visit my <a href="https://github.com/eqedos" target="_blank" className="text-blue-400 hover:text-blue-300 transition duration-300 ease-in-out">GitHub profile</a>. New contributions and repositories will be added regularly, showcasing my commitment to growth and learning in the field of technology.
+        Here, I'm showcasing a selection of my most accomplished and award-winning work...
+        {/* The rest of your paragraph here */}
       </p>
-      <div className="space-y-6">
+      <div className="space-y-6 mb-10">
         {/* Repeat the Project component for each project in the dummy data */}
         <ProjectPortfolio/>
         <ProjectVoluntr/>
@@ -80,16 +93,5 @@ const ProjectShowcase = () => {
 };
 
 
-
-const Projects = ({ onClose }) => {
-  return (
-    <div className="bg-black text-white w-screen min-h-screen p-10 flex flex-col">
-      <div className="container mx-auto flex-grow">
-        <Header onClose={onClose} />
-        <Main />
-      </div>
-    </div>
-  );
-};
 
 export default Projects;
