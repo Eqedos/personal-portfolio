@@ -22,7 +22,6 @@
     "install": "^0.13.0",
     "npm": "^10.2.3",
     "particles-bg": "^2.5.5",
-    "particles.js": "^2.0.0",
     "re-resizable": "^6.9.11",
     "react": "^18.2.0",
     "react-chrono": "^2.3.1",
