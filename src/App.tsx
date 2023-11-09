@@ -14,7 +14,11 @@ import Terminal from './components/Terminal';
 import AboutMe from './components/AboutMe';
 import Contact from './components/Contact';
 import Projects from './components/Projects';
+import Experience from './components/Experience';
+import Help from './components/Help';
+
 import { useHotkeys } from 'react-hotkeys-hook';
+
 
 
 const statusBarIcons = [
@@ -35,7 +39,8 @@ const App = () => {
   const [showContact, setShowContact] = useState(false);
   const [showAboutMe, setShowAboutMe] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
-
+  const [showExperience, setShowExperience] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
   }, [backgroundColor]);
@@ -45,8 +50,19 @@ const App = () => {
   const toggleAboutMe = () => setShowAboutMe(!showAboutMe);
   const toggleContact = () => setShowContact(!showContact);
   const toggleProjects = () => setShowProjects(!showProjects);
+  const toggleExperience = () => setShowExperience(!showExperience);
+  const toggleHelp = () => setShowHelp(!showHelp);
 
+  const terminalToggles = {
+    toggleColorPicker,
+    toggleTerminal,
+    toggleAboutMe,
+    toggleContact,
+    toggleProjects,
+    toggleExperience,
+  };
   useHotkeys('t', toggleTerminal);
+  useHotkeys('h', toggleHelp);
 
   const colorPickerVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -60,7 +76,7 @@ const App = () => {
           <Icon text="About Me" onClick={toggleAboutMe} icon={FaUserAlt} />
           <Icon text="Projects" onClick={toggleProjects} icon={FolderIcon} />
           <Icon text="Contact" onClick={toggleContact} icon={FaPhoneAlt} />
-          <Icon text="Experience" onClick={() => {}} icon={FaBriefcase} />
+          <Icon text="Experience" onClick={toggleExperience} icon={FaBriefcase} />
         </div>
         <CenteredText
           mainText="Parth Kumar"
@@ -87,6 +103,16 @@ const App = () => {
             <Contact onClose={toggleContact}/>
           </motion.div>
         )}
+        {showExperience && (
+          <motion.div
+            className="absolute inset-0 flex justify-center items-center z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Experience onClose={toggleExperience}/>
+          </motion.div>
+        )}
         {showProjects && (
           <motion.div
             className="absolute inset-0 flex justify-center items-center z-40"
@@ -97,15 +123,25 @@ const App = () => {
             <Projects onClose={toggleProjects}/>
           </motion.div>
         )}
+        {showHelp && (
+          <motion.div
+            className="absolute inset-0 flex justify-center items-center z-40"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <Help onClose={toggleHelp}/>
+          </motion.div>
+        )}
       </main>
-      {!showProjects && (
+      {!showExperience && !showProjects && (
         <footer className="p-4 bg-black text-white flex items-center justify-center z-10">
           {statusBarIcons.map(iconData => (
             <StatusBarElement key={iconData.id} onClick={() => {}} icon={iconData.icon} color={iconData.color} />
           ))}
         </footer>
       )}
-      {!showProjects && (
+      {!showProjects && !showExperience && (
   <div>
     <div className="absolute left-0 bottom-0 p-4 flex items-center z-30">
       <FaTerminal className="text-white w-6 h-6 cursor-pointer" onClick={toggleTerminal} />
@@ -129,7 +165,7 @@ const App = () => {
         setShowModal={setShowColorPicker}
       />
     )}
-    {showTerminal && <Terminal onClose={toggleTerminal} />}
+    {showTerminal && <Terminal onClose={toggleTerminal}/>}
   </div>
 )}
     </div>

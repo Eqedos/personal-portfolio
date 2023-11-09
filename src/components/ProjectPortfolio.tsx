@@ -2,6 +2,9 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { FaGithub } from 'react-icons/fa';
+import Port1 from '../assets/port1.png'
+import Port2 from '../assets/port2.png'
+import Port3 from '../assets/port3.png'
 
 const ProjectPortfolio = () => {
     const primaryColor = '#78DEC7'; // A unique mint green color for vibrant contrast
@@ -33,7 +36,7 @@ const ProjectPortfolio = () => {
                             </p>
                         </div>
                         <div className="mt-4">
-                            <a href="https://github.com/yourgithub/portfolio" target='_blank' className="hover:text-primaryColor">
+                            <a href="https://github.com/Eqedos/personal-portfolio" target='_blank' className="hover:text-primaryColor">
                                 <FaGithub className="inline-block" size="2em" style={{ color: secondaryColor }} />
                             </a>
                         </div>
@@ -41,7 +44,15 @@ const ProjectPortfolio = () => {
                 </div>
                 <div className="w-full md:w-1/3 p-6">
                     <Carousel autoPlay infiniteLoop showThumbs={false}>
-                        {/* Add your carousel images here */}
+                    <div>
+                        <img src={Port1} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
+                    </div>
+                    <div>
+                        <img src={Port2} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
+                    </div>
+                    <div>
+                        <img src={Port3} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
+                    </div>
                     </Carousel>
                 </div>
             </div>
