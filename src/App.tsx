@@ -73,13 +73,20 @@ const App = () => {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col h-screen justify-center items-center bg-black text-white">
-        <h1 className="text-2xl">PK</h1>
-        <h1 className="text-lg">Coming Soon!</h1>
-        <p>Our app is not yet available for mobile devices, but we're working on it.</p>
+      <div className="flex flex-col h-screen justify-center items-center bg-black">
+        <h1 className="text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500">
+          PK
+        </h1>
+        <h2 className="mt-2 text-2xl font-light text-gray-300">
+          Coming Soon!
+        </h2>
+        <p className="mt-4 text-gray-400 max-w-xs text-center">
+          My portfolio website is not yet available for mobile devices, but I'm on it!
+        </p>
       </div>
     );
   }
+  
   
 
   return (
