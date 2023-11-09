@@ -55,7 +55,6 @@ const Terminal = ({ onClose }) => {
       "location",
       "education",
       "skills",
-      "interests",
     ],
     "/Contact/sendEmail": <span>Email: <a href="mailto:parthkumarj117@gmail.com" className="text-blue-500 hover:text-blue-700">parthkumarj117@gmail.com</a></span>,
     "/Contact/LinkedIn": <span>LinkedIn: <a href="https://www.linkedin.com/in/parth-kumar-j117" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:text-blue-700">parth-kumar-j117</a></span>,
