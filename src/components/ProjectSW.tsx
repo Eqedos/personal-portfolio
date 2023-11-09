@@ -32,7 +32,7 @@ const ProjectSW = () => {
                         </p>
                     </div>
                     <div className="mt-4">
-                        <a href="https://github.com/SustainWebable/AndroidApp" target='_blank' className="text-green-500 hover:text-green-400">
+                        <a href="https://github.com/Eqedos/SustainWebable" target='_blank' className="text-green-500 hover:text-green-400">
                             <FaGithub className="inline-block" size="2em" />
                         </a>
                     </div>
