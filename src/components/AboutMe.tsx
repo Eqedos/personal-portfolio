@@ -111,6 +111,14 @@ const executeSkills = () => {
   );
 
   return (
+    <>
+    <button
+        onClick={handleCloseClick}
+        className="fixed top-4 right-4 z-50 block md:hidden text-white bg-red-500 p-2 rounded-full focus:outline-none"
+        title="Close"
+      >
+        X
+      </button>
     <Draggable handle=".handle" disabled={disabled}>
       <ResizableBox
         width={620}
@@ -139,6 +147,7 @@ const executeSkills = () => {
         </div>
       </ResizableBox>
     </Draggable>
+    </>
   );
 };
 

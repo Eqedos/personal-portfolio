@@ -59,6 +59,14 @@ const Contact = ({ onClose }) => {
   };
 
   return (
+    <>
+    <button
+        onClick={handleCloseClick}
+        className="fixed top-4 right-4 z-50 block md:hidden text-white bg-red-500 p-2 rounded-full focus:outline-none"
+        title="Close"
+      >
+        X
+      </button>
     <div className={`relative ${darkMode ? 'dark' : ''}`}>
       
       <AnimatePresence>
@@ -168,6 +176,7 @@ const Contact = ({ onClose }) => {
         </ResizableBox>
       </Draggable>
     </div>
+    </>
   );
 };
 
