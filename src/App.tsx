@@ -73,12 +73,14 @@ const App = () => {
 
   if (isMobile) {
     return (
-      <div className="flex flex-col h-screen justify-center items-center">
+      <div className="flex flex-col h-screen justify-center items-center bg-black text-white">
+        <h1 className="text-2xl">PK</h1>
         <h1 className="text-lg">Coming Soon!</h1>
         <p>Our app is not yet available for mobile devices, but we're working on it.</p>
       </div>
     );
   }
+  
 
   return (
     <div className="flex flex-col h-screen overflow-hidden relative">
