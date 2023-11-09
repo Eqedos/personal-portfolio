@@ -44,17 +44,29 @@ const ProjectPortfolio = () => {
                     </div>
                 </div>
                 <div className="w-full md:w-1/3 p-6">
-                    <Carousel autoPlay infiniteLoop showThumbs={false}>
-                    <div>
-                        <img src={Port1} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-                    </div>
-                    <div>
-                        <img src={Port2} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-                    </div>
-                    <div>
-                        <img src={Port3} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-                    </div>
-                    </Carousel>
+                <Carousel autoPlay infiniteLoop showThumbs={false}>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Port1} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Port2} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Port3} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+            </Carousel>
                 </div>
             </div>
         </div>

@@ -45,25 +45,49 @@ const ProjectVoluntr = () => {
                 </div>
                 <div className="w-full md:w-1/3 p-6">
                 <Carousel autoPlay infiniteLoop showThumbs={false}>
-    <div>
-        <img src={Vlogo} alt="Vlogo" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-    </div>
-    <div>
-        <img src={Vmain} alt="Vmain" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-    </div>
-    <div>
-        <img src={Vmain2} alt="Vmain2" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-    </div>
-    <div>
-        <img src={Vmain3} alt="Vmain3" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-    </div>
-    <div>
-        <img src={Vmain4} alt="Vmain4" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-    </div>
-    <div>
-        <img src={Vmain5} alt="Vmain5" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-    </div>
-</Carousel>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Vlogo} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Vmain} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Vmain2} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Vmain3} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Vmain4} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+                <div className="h-50vh lg-monitor:h-25vh">
+                    <img 
+                    src={Vmain5} 
+                    alt="Vlogo"
+                    style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
+                    />
+                </div>
+            </Carousel>
 
 
                 </div>
