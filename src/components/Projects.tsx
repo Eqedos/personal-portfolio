@@ -60,7 +60,7 @@ const Main = () => {
 
 const ProjectShowcase = () => {
   return (
-    <div className="h-96 overflow-y-auto scrollbar-hide pb-10">
+    <div className="h-96 overflow-y-auto scrollbar-hide pb-1">
       <h1 className="text-6xl font-bold mb-10 text-center bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-500 py-3">
         Project Showcase.
       </h1>
