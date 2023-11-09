@@ -16,7 +16,7 @@ import Contact from './components/Contact';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Help from './components/Help';
-
+import { useMediaQuery } from 'react-responsive';
 import { useHotkeys } from 'react-hotkeys-hook';
 
 
@@ -41,6 +41,8 @@ const App = () => {
   const [showProjects, setShowProjects] = useState(false);
   const [showExperience, setShowExperience] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   useEffect(() => {
     document.body.style.backgroundColor = backgroundColor;
   }, [backgroundColor]);
@@ -68,6 +70,15 @@ const App = () => {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 }
   };
+
+  if (isMobile) {
+    return (
+      <div className="flex flex-col h-screen justify-center items-center">
+        <h1 className="text-lg">Coming Soon!</h1>
+        <p>Our app is not yet available for mobile devices, but we're working on it.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-screen overflow-hidden relative">
