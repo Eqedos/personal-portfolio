@@ -18,7 +18,7 @@ import Experience from './components/Experience';
 import Help from './components/Help';
 import { useMediaQuery } from 'react-responsive';
 import { useHotkeys } from 'react-hotkeys-hook';
-
+import { Analytics } from '@vercel/analytics/react';
 
 
 const statusBarIcons = [
@@ -189,6 +189,7 @@ const App = () => {
       />
     )}
     {showTerminal && <Terminal onClose={toggleTerminal}/>}
+    <Analytics />
   </div>
 )}
     </div>

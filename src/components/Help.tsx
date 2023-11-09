@@ -42,7 +42,7 @@ const Help = ({ onClose }) => {
               For a list of all available terminal commands, type 'help' in the terminal. This will display a comprehensive list of commands that you can use to interact with the terminal application.
             </p>
             <p className="mt-2">
-              There are various features scattered throughout the interface. We encourage you to explore and discover all the functionalities available. You might find handy tools and shortcuts that can enhance your productivity and overall experience.
+              There are various features scattered throughout the interface. I encourage you to explore and discover all the functionalities available. You might find handy tools and shortcuts that can enhance your productivity and overall experience.
             </p>
           </div>
         </div>
