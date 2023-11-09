@@ -83,8 +83,8 @@ const ProjectShowcase = () => {
 
 const Projects = ({ onClose }) => {
   return (
-    <div className="bg-black text-white w-screen h-screen p-10">
-      <div className="container mx-auto">
+    <div className="bg-black text-white w-screen min-h-screen p-10 flex flex-col">
+      <div className="container mx-auto flex-grow">
         <Header onClose={onClose} />
         <Main />
       </div>
