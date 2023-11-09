@@ -39,14 +39,22 @@ const ProjectSW = () => {
                 </div>
             </div>
             <div className="w-full md:w-1/3 p-6">
-                <Carousel autoPlay infiniteLoop showThumbs={false}>
-                    <div>
-                        <img src={Sus1} alt="Vlogo" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-                    </div>
-                    <div>
-                        <img src={Sus2} alt="Vlogo" style={{ maxWidth: '100%', height: '50vh', objectFit: 'contain' }} />
-                    </div>
-                </Carousel>
+            <Carousel autoPlay infiniteLoop showThumbs={false}>
+                <div className="h-50vh md:h-auto">
+                    <img 
+                    src={Sus1} 
+                    alt="Vlogo" 
+                    className="max-w-full h-auto object-contain md:w-1/4 md:h-screen" 
+                    />
+                </div>
+                <div className="h-50vh md:h-auto">
+                    <img 
+                    src={Sus2} 
+                    alt="Vlogo" 
+                    className="max-w-full h-auto object-contain md:w-1/4 md:h-screen" 
+                    />
+                </div>
+            </Carousel>
             </div>
         </div>
     </div>
