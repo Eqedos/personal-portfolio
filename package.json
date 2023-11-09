@@ -37,7 +37,6 @@
     "react-resizable": "^3.0.5",
     "react-responsive-carousel": "^3.2.23",
     "react-tilt": "^1.0.2",
-    "react-tsparticles": "^2.12.2",
     "swiper": "^11.0.3",
     "tailwind-scrollbar-hide": "^1.1.7"
     },
