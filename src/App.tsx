@@ -94,13 +94,14 @@ const App = () => {
       <div className="absolute top-4 right-4 text-gray-400 text-xs opacity-50">
   Press <kbd className="p-1 bg-gray-700">h</kbd> for help | Press <kbd className="p-1 bg-gray-700">t</kbd> for terminal
 </div>
-      <main className="flex-grow p-4 relative z-10 flex justify-start items-start">
-        <div className="z-30">
-          <Icon text="About Me" onClick={toggleAboutMe} icon={FaUserAlt} />
-          <Icon text="Projects" onClick={toggleProjects} icon={FolderIcon} />
-          <Icon text="Contact" onClick={toggleContact} icon={FaPhoneAlt} />
-          <Icon text="Experience" onClick={toggleExperience} icon={FaBriefcase} />
-        </div>
+<main className="flex-grow p-4 relative z-10 flex justify-start items-start">
+      <div className="flex flex-col items-start z-30">
+      <div className="text-gray-200 text-xs opacity-50">Double click.</div>
+        <Icon text="About Me" onClick={toggleAboutMe} icon={FaUserAlt} />
+        <Icon text="Projects" onClick={toggleProjects} icon={FolderIcon} />
+        <Icon text="Contact" onClick={toggleContact} icon={FaPhoneAlt} />
+        <Icon text="Experience" onClick={toggleExperience} icon={FaBriefcase} />
+      </div>
         <CenteredText
           mainText="Parth Kumar"
           subText="Student | Software Engineer"
