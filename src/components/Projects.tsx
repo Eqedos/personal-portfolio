@@ -27,7 +27,7 @@ const SearchBar = () => {
         </div>
         <input
           type="text"
-          value="parthprojects.com"
+          value="parthportfolioprojects.com"
           readOnly
           className="bg-transparent text-white p-2 w-full focus:outline-none"
         />
