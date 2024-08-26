@@ -1,130 +1,142 @@
 //@ts-nocheck
-import React, { useState, useEffect, useRef } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef } from 'react';
 
 const experienceData = [
   { 
     id: 1, 
-    title: 'Research Intern', 
-    company: 'SIMTech A*STAR', 
-    year: '2023', 
-    description: 'Developed and deployed a web application using React and Streamlit, with a Flask backend. Focused on usability through direct feedback from energy-system modellers.', 
-    duration: 'August 2023 – December 2023'
+    title: 'Software Developer', 
+    company: 'Stealth Tech Startup', 
+    logo: 'src/assets/stealth_final.png', // Path to the logo image
+    year: '2024', 
+    duration: 'August 2024 – Present',
+    location: 'Singapore · On-site',
+    responsibilities: [
+      'Developed a web application using Next.js and PostgreSQL, implementing user authentication and data security by encrypting data at rest.',
+      'Engineered a system to securely handle input files from multiple users, integrating them through linker markers, resulting in a 30% reduction in processing time.',
+      'Implemented a disaggregation feature that ensured users received only relevant data, improving data confidentiality and compliance by 100%.'
+    ],
+    techStack: 'Next.js, PostgreSQL, Authentication, Data Encryption'
   },
   { 
     id: 2, 
-    title: 'Consultant', 
-    company: 'Climate Analytics', 
+    title: 'Software Engineer Intern', 
+    company: 'SIMTech, A*STAR', 
+    logo: 'src/assets/A_STAR_logo.png', // Path to the logo image
+    year: '2024', 
+    duration: 'May 2024 – Sep 2024',
+    location: 'Singapore · On-site',
+    responsibilities: [
+      'Developed the backend for an energy systems optimization tool using Python, with CVXPY for optimization and FastAPI for API endpoints.',
+      'Crafted adaptable JSON schemas tailored for seamless future integration with AWS services, including Batch, SQS, and S3.',
+      'Created unit tests for system reliability and configured support for multiple convex optimization solvers, significantly boosting performance by up to 150%.'
+    ],
+    techStack: 'Python, CVXPY, FastAPI, AWS'
+  },
+  { 
+    id: 3, 
+    title: 'Software Engineer Intern', 
+    company: 'SIMTech, A*STAR', 
+    logo: 'src/assets/A_STAR_logo.png', // Path to the logo image
     year: '2023', 
-    description: 'Automated workflows in Python, enhancing efficiency, and prepared data visualizations for UN COP28. Contributed to climate policy discussions.', 
-    duration: 'July 2023 – December 2023' 
+    duration: 'August 2023 – December 2023',
+    location: 'Singapore · On-site',
+    responsibilities: [
+      'Developed a POC web application for an optimization tool with React and Streamlit, and established Flask endpoints for local data processing and testing.',
+      'Leveraged Python libraries for interactive maps and graphs, enhancing data presentation and accessibility in energy system modeling.',
+      'Managed the web app’s development cycle from concept to Docker containerization, prioritizing user experience and project alignment.'
+    ],
+    techStack: 'React, Streamlit, Python, Flask'
+  },
+  { 
+    id: 4, 
+    title: 'Software Consultant', 
+    company: 'Climate Analytics', 
+    logo: 'src/assets/climate-analytics-logo-vector.png', // Path to the logo image
+    year: '2023', 
+    duration: 'July 2023 – Dec 2023',
+    location: 'Remote',
+    responsibilities: [
+      'Collaborated on climate initiatives, automated workflows with Python and Snakemake, enhancing workflow efficiency by 270%.',
+      'Adapted energy modelling tools for CBC and GLPK optimization solvers.',
+      'Developed detailed Python visualizations to highlight complex data patterns. Prepared insights for UN COP28 showcase.'
+    ],
+    techStack: 'Python, Snakemake, Data Visualization'
   },
 ];
 
-const ExperienceCard = ({ exp, isSelected, onSelect, cardRef }) => (
-  <motion.div
-    ref={cardRef}
-    className={`transition duration-500 ease-in-out cursor-pointer p-4 border-2 ${isSelected ? 'border-white' : 'border-gray-700'} hover:border-white`}
-    onClick={() => onSelect(exp)}
-    animate={{ scale: isSelected ? 1.1 : 1 }}
-  >
-    <div className="text-center"> 
-      <p className="font-bold text-white text-lg">{exp.title}</p>
-      <p className="text-gray-300">{exp.company}</p>
-      <p className="text-gray-300">{exp.year}</p>
-    </div>
-  </motion.div>
-);
-
-const ExperiencePopup = ({ exp }) => (
-  <motion.div
-    className="bg-gray-900 text-white pt-8 pb-5 px-5 rounded-md shadow-2xl transform transition duration-500 hover:scale-105 w-1/2 mx-auto mt-12 mb-8 border border-gray-700 hover:border-gray-500"
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5 }}
-  >
-    <div className="flex flex-col items-start justify-between">
-      <h3 className="text-3xl font-bold text-blue-400 mb-4">{exp.title}</h3>
-      <div className="w-full border-t border-gray-600 my-3"></div>
-      <p className="text-sm font-light text-gray-400"><strong className="text-gray-300 font-normal">Company:</strong> {exp.company}</p>
-      <p className="text-sm font-light text-gray-400"><strong className="text-gray-300 font-normal">Year:</strong> {exp.year}</p>
-      <p className="text-sm font-light text-gray-400"><strong className="text-gray-300 font-normal">Duration:</strong> {exp.duration}</p>
-      <div className="w-full border-t border-gray-600 my-3"></div>
-      <p className="text-sm font-light text-gray-400"><strong className="text-gray-300 font-normal">Description:</strong></p>
-      <p className="text-gray-400 text-sm">{exp.description}</p>
-    </div>
-  </motion.div>
-);
-
 const Experience = ({ onClose }) => {
-  const [position, setPosition] = useState(0);
-  const [selectedExp, setSelectedExp] = useState(experienceData[0]);
-  const refs = experienceData.map(() => useRef(null));
+  const sectionRefs = useRef(experienceData.map(() => React.createRef()));
 
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      if (event.key === 'ArrowRight' && position < experienceData.length - 1) {
-        setPosition(position + 1);
-        setSelectedExp(experienceData[position + 1]);
-      } else if (event.key === 'ArrowLeft' && position > 0) {
-        setPosition(position - 1);
-        setSelectedExp(experienceData[position - 1]);
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, [position]);
-
-  useEffect(() => {
-    refs[position].current.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest',
-      inline: 'center',
-    });
-  }, [position]);
+  const scrollToSection = (index) => {
+    sectionRefs.current[index].current.scrollIntoView({ behavior: 'smooth' });
+  };
 
   return (
-    <div className="relative flex flex-col items-center justify-between w-full h-screen bg-black text-white">
+    <div className="relative flex h-screen w-screen bg-white">
+      {/* Close Button */}
       <button
-        className="absolute top-5 right-5 text-3xl leading-none hover:text-gray-300 z-10"
+        className="absolute top-5 right-5 text-3xl leading-none hover:text-gray-300 z-50"
         onClick={onClose}
       >
         &times;
       </button>
 
-      {/* Popup section */}
-      <div className="flex justify-center items-center w-full h-1/2">
-        <ExperiencePopup exp={selectedExp} />
+      {/* Left Sidebar - Timeline */}
+      <div className="w-1/4 h-full bg-gray-100 overflow-y-auto">
+        <div className="relative p-4">
+          <h3 className="text-lg font-semibold mb-8">Work Experience</h3>
+          <div className="absolute left-10 top-16 bottom-0 w-1 bg-gray-300"></div>
+          {experienceData.map((exp, index) => (
+            <div
+              key={exp.id}
+              className={`relative mb-8 pl-12 cursor-pointer ${exp.id === experienceData[index].id ? 'text-blue-500 font-semibold' : 'text-black'}`}
+              onClick={() => scrollToSection(index)}
+            >
+              <div className={`absolute left-5 top-0 transform -translate-x-1/2 w-4 h-4 rounded-full bg-blue-500`}></div>
+              <p className="text-sm">{exp.year}</p>
+              <p className="text-md">{exp.title}</p>
+              <p className="text-xs text-gray-500">{exp.company}</p>
+              <p className="text-xs text-gray-500">{exp.duration}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Right Content Area with All Experiences */}
+      <div className="w-3/4 h-full overflow-y-auto p-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold">Experience</h1>
+          <p className="text-lg text-gray-600 mt-2">i am a software engineer, i am a software engineer, i am a software engineer.</p>
+          <hr className="mt-6 border-t-2 border-gray-200" />
         </div>
 
-{/* Timeline section */}
-<div className="w-full h-1/2 flex justify-center items-end pb-5 px-16">
-  <div className="w-full flex justify-between items-center relative">
-    <div className="absolute w-full h-1 bg-white opacity-50" style={{ bottom: '100px' }} />
-
-    {experienceData.map((exp, index) => (
-      <div className="relative">
-        <div className="absolute w-1 h-1 bg-white rounded-full" style={{ bottom: '100px', left: '50%' }} />
-        <ExperienceCard
-          key={exp.id}
-          exp={exp}
-          isSelected={index === position}
-          onSelect={() => {
-            setPosition(index);
-            setSelectedExp(exp);
-          }}
-          cardRef={refs[index]}
-        />
+        {experienceData.map((exp, index) => (
+          <div key={exp.id} ref={sectionRefs.current[index]} className="mb-16">
+            <h2 className="text-2xl font-bold mb-4">{exp.title}</h2>
+            <div className="flex items-start mb-4">
+              {exp.logo && (
+                <img src={exp.logo} className="mr-4" style={{ maxWidth: '300px', height: '100px' }} />
+              )}
+              <div className="flex-1">
+                <p className="text-lg text-gray-700">{exp.company}</p>
+                <p className="text-sm text-gray-500">{exp.duration} | {exp.location}</p>
+                <ul className="list-disc ml-5 text-sm text-gray-600 leading-relaxed">
+                  {exp.responsibilities.map((item, i) => (
+                    <li key={i} className="mt-2">{item}</li>
+                  ))}
+                </ul>
+                {exp.techStack && (
+                  <p className="text-sm text-gray-500 mt-3"><strong>Tech Stack:</strong> {exp.techStack}</p>
+                )}
+              </div>
+            </div>
+            <hr className="mt-6 border-t-2 border-gray-200" />
+          </div>
+        ))}
       </div>
-    ))}
-  </div>
-</div>
-<p className="text-gray-400 absolute bottom-5 left-1/2 transform -translate-x-1/2">Use the left and right arrow keys to move.</p>
-</div>
-);
+    </div>
+  );
 };
 
 export default Experience;
