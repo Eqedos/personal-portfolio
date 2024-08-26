@@ -1,12 +1,15 @@
 //@ts-nocheck
 import React, { useState, useRef } from 'react';
+import stealthLogo from '../assets/stealth_final.png';
+import aStarLogo from '../assets/A_STAR_logo.png';
+import climateAnalyticsLogo from '../assets/climate-analytics-logo-vector.png';
 
 const experienceData = [
   { 
     id: 1, 
     title: 'Software Developer', 
     company: 'Stealth Tech Startup', 
-    logo: '../assets/stealth_final.png', // Path to the logo image
+    logo: stealthLogo, // Imported image
     year: '2024', 
     duration: 'August 2024 – Present',
     location: 'Singapore · On-site',
@@ -21,7 +24,7 @@ const experienceData = [
     id: 2, 
     title: 'Software Engineer Intern', 
     company: 'SIMTech, A*STAR', 
-    logo: '../assets/A_STAR_logo.png', // Path to the logo image
+    logo: aStarLogo, // Imported image
     year: '2024', 
     duration: 'May 2024 – Sep 2024',
     location: 'Singapore · On-site',
@@ -36,7 +39,7 @@ const experienceData = [
     id: 3, 
     title: 'Software Engineer Intern', 
     company: 'SIMTech, A*STAR', 
-    logo: '../assets/A_STAR_logo.png', // Path to the logo image
+    logo: aStarLogo, // Reuse the same imported image
     year: '2023', 
     duration: 'August 2023 – December 2023',
     location: 'Singapore · On-site',
@@ -51,7 +54,7 @@ const experienceData = [
     id: 4, 
     title: 'Software Consultant', 
     company: 'Climate Analytics', 
-    logo: '../assets/climate-analytics-logo-vector.png', // Path to the logo image
+    logo: climateAnalyticsLogo, // Imported image
     year: '2023', 
     duration: 'July 2023 – Dec 2023',
     location: 'Remote',
