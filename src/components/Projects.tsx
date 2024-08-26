@@ -83,9 +83,9 @@ const ProjectShowcase = () => {
         {/* Repeat the Project component for each project in the dummy data */}
         <ProjectVoluntr/>
         <ProjectReelReview/>
+        <ProjectPortfolio/>
         <ProjectEcode/>
         <ProjectSW/>
-        <ProjectPortfolio/>
       </div>
     </div>
   );
