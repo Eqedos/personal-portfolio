@@ -6,7 +6,7 @@ const experienceData = [
     id: 1, 
     title: 'Software Developer', 
     company: 'Stealth Tech Startup', 
-    logo: 'src/assets/stealth_final.png', // Path to the logo image
+    logo: '../assets/stealth_final.png', // Path to the logo image
     year: '2024', 
     duration: 'August 2024 – Present',
     location: 'Singapore · On-site',
@@ -21,7 +21,7 @@ const experienceData = [
     id: 2, 
     title: 'Software Engineer Intern', 
     company: 'SIMTech, A*STAR', 
-    logo: 'src/assets/A_STAR_logo.png', // Path to the logo image
+    logo: '../assets/A_STAR_logo.png', // Path to the logo image
     year: '2024', 
     duration: 'May 2024 – Sep 2024',
     location: 'Singapore · On-site',
@@ -36,7 +36,7 @@ const experienceData = [
     id: 3, 
     title: 'Software Engineer Intern', 
     company: 'SIMTech, A*STAR', 
-    logo: 'src/assets/A_STAR_logo.png', // Path to the logo image
+    logo: '../assets/A_STAR_logo.png', // Path to the logo image
     year: '2023', 
     duration: 'August 2023 – December 2023',
     location: 'Singapore · On-site',
@@ -51,7 +51,7 @@ const experienceData = [
     id: 4, 
     title: 'Software Consultant', 
     company: 'Climate Analytics', 
-    logo: 'src/assets/climate-analytics-logo-vector.png', // Path to the logo image
+    logo: '../assets/climate-analytics-logo-vector.png', // Path to the logo image
     year: '2023', 
     duration: 'July 2023 – Dec 2023',
     location: 'Remote',
