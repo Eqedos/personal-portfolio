@@ -3,7 +3,6 @@ import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import Tilt from 'react-parallax-tilt';
 import { FaGithub } from 'react-icons/fa';
-import Tmain from '../assets/tmain.png';
 import Tmain2 from '../assets/tmain2.png';
 import Tmain3 from '../assets/tmain3.png';
 import Tmain4 from '../assets/tmain4.png';
@@ -50,7 +49,7 @@ const ProjectReelReview = () => {
                     <Carousel autoPlay infiniteLoop showThumbs={false}>
                 <div className="h-50vh lg-monitor:h-25vh">
                     <img 
-                    src={Tmain} 
+                    src={Tmain4} 
                     alt="Vlogo"
                     style={{ maxWidth: '100%', height: '100%', objectFit: 'contain' }}
                     />
